@@ -1,0 +1,149 @@
+.HomeIndex .swiper-list {
+  position: relative;
+  height: 4.2rem;
+}
+
+.HomeIndex .swiper-list .InputBox {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 0.5rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.HomeIndex .swiper-list .InputBox .local {
+  position: absolute;
+  display: flex;
+
+  align-items: center;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 20px;
+}
+.HomeIndex .swiper-list .InputBox .local .line{
+  
+  width: 1px;
+  height:20px;
+  margin-left: 10px;
+  border-left: 1px solid rgb(195 194 194);
+}
+.HomeIndex .swiper-list .InputBox .local span {
+  margin-right: 0.1rem;
+}
+.HomeIndex .swiper-list .InputBox .SearchBar {
+  position: relative;
+  width: 70%;
+}
+.HomeIndex
+  .swiper-list
+  .InputBox
+  .adm-search-bar
+  .adm-search-bar-input-box
+  .adm-search-bar-input-box-icon {
+  padding-left: 75px;
+  font-size: 16px;
+}
+.HomeIndex .swiper-list .InputBox input {
+  font-size: 14px;
+}
+.HomeIndex .swiper-list .InputBox .icon {
+  margin-left: 0.15rem;
+  color: rgb(245, 245, 245);
+}
+
+.HomeIndex .swiper-list .InputBox .icon1 {
+  /* margin-left: .15rem; */
+  color: rgb(110, 110, 110);
+}
+.HomeIndex .swiper-list .swiper-img img {
+  height: 4.2rem;
+}
+.HomeIndex .nav-list img {
+  justify-content: center;
+  width: 1rem;
+}
+.HomeIndex .nav-list h2 {
+  font-size: 13px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.HomeIndex .nav-list {
+  /* align-items: center; */
+  margin: 0.2rem 0;
+  justify-items: center;
+  /* justify-content属性是整个内容区域在容器里面的水平位置（左中右），align-content属性是整个内容区域的垂直位置（上中下）。
+justify-content: center;
+align-content: center;   */
+}
+.HomeIndex .renRoom {
+  background-color: rgb(235, 235, 235);
+}
+.HomeIndex .renRoom .renRoom-context {
+  padding: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HomeIndex .renRoom .Groutlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5rem;
+}
+.HomeIndex .renRoom .Grid-Item {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+}
+.HomeIndex .renRoom .groups-list {
+  margin-top: 0;
+  padding: 0 0.2rem 0.2rem 0.2rem;
+}
+.HomeIndex .renRoom .Groutlist ul {
+  margin-right: 0.3rem;
+}
+.HomeIndex .renRoom .Groutlist ul li h3 {
+  font-size: 0.25rem;
+  margin: 0.1rem;
+  font-weight: bolder;
+}
+
+.HomeIndex .renRoom .Groutlist ul li p {
+  font-size: 0.16rem;
+}
+
+.HomeIndex .consults h2 {
+  margin: 0.2rem 0.3rem;
+}
+
+.HomeIndex .consults .consults-contain {
+  display: flex;
+  margin: 0.2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2rem;
+}
+.HomeIndex .consults .consults-contain img {
+  height: 2.2rem;
+  width: 3.6rem;
+}
+.HomeIndex .consults .consults-contain .consults-contain-right {
+  margin-left: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.HomeIndex .consults .consults-contain .consults-contain-right p {
+  font-weight: bolder;
+}
+.HomeIndex
+  .consults
+  .consults-contain
+  .consults-contain-right
+  .consults-contain-right-bottom {
+  display: flex;
+  justify-content: space-between;
+}

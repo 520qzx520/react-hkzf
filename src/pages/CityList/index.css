@@ -1,0 +1,41 @@
+.citylist {
+  height: 100%;
+  /* 解决react-virtualized整个页面滚动问题 */
+  padding-top: 45px;
+  /* ---------------------------- */
+}
+.citylist .NavHeader {
+  margin-top: -45px;
+}
+
+.citylist .city .name,
+.citylist .city .title {
+  margin: 0 25px;
+  padding: 8px 0;
+}
+
+.citylist .city .name {
+  border-bottom: 1px solid #ddd;
+}
+.citylist .city-index {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  right: 5px;
+  padding-top: 10px;
+}
+.citylist .city-index .citt-index-item {
+  margin-left: -3px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50%;
+  text-align: center;
+}
+.citylist .city-index .index-active {
+  background-color: #3d70ff;
+  color: white;
+}

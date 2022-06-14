@@ -1,13 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body{
+  font-family:'Microsoft YAHei';
+  color: #333;
+  background-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  box-sizing:  border-box;
+  
+}
+
+/* css初始化文件 */
+body,ul,li,p,h1,h2,h3,h4,h5{
+  margin: 0;
+  padding: 0;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
+img{
+  border: 0;
+  width: 100%;
+}
+/* 移动端布局 */
+html{
+  font-size: 13.33333333vw;
+}
+/* 防止字体过大  */
+@media (min-width: 750px) {
+    html {
+      font-size: 100px;
+    }
+}
+body{
+  font-size: 14px;
+  font-family: '微软雅黑', 'Arial Narrow', Arial, sans-serif;
+  max-width: 750px;
+  margin:  0 auto;
+}
+
+html , body , #root , .App {
+  height: 100%;
 }

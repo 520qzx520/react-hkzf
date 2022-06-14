@@ -1,0 +1,45 @@
+.Login{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.Login .contain{
+    width: 100%;
+    position: absolute;
+    top: 2rem;
+    padding: 0 25px;
+    
+}
+.Login .Login-form{
+    width: 100%;
+   margin-top: .45rem;
+}
+.Login .Login-form .input{
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+.Login .Login-form .adm-form {
+    --border-inner: none; 
+    --border-top: none; 
+    --border-bottom: none;
+}
+.Login .Login-form .password{
+    padding-top: .2rem;
+}
+.Login .Login-form .button{
+    margin-top: .5rem;
+    background-color: rgb(76 147 255);
+}
+
+.Login .bottom-list{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 20px;
+    padding: 0 25px;
+}
+
+.Login .bottom-list li{
+    font-weight: bolder;
+}

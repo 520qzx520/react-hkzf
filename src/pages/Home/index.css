@@ -1,0 +1,12 @@
+.Home{
+  padding-bottom: 1rem;
+}
+ .Home .tabbar {
+  margin: 0 auto;
+  position: fixed;
+  width: 100%;
+  max-width: 750px;
+  bottom: 0;
+  background-color: #fff;
+  /* left: 0; */
+} 

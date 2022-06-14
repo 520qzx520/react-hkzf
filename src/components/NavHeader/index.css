@@ -1,0 +1,6 @@
+.NavHeader {
+    /* 解决react-virtualized整个页面滚动问题 */
+    /* margin-top: -45px; */
+    /* ---------------------------- */
+    background-color: rgb(238, 238, 238);
+  }

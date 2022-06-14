@@ -1,0 +1,157 @@
+.Map,
+.Map #container {
+  height: 100%;
+  padding-top: 45px;
+}
+
+.Map .NavHeader {
+  /* 解决react-virtualized整个页面滚动问题 */
+  margin-top: -45px;
+}
+.Map .bubble {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background-color: rgb(50, 156, 255);
+  /* opacity: .5; */
+}
+.Map .name {
+  padding: 12px 0;
+}
+
+.Map .rect {
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: rgb(0 93 255);
+}
+.Map .rect .housename {
+  display: inline-block;
+  width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.Map .rect .housenum {
+  display: inline-block;
+  width: 20px;
+}
+.Map .rect .arrow {
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border: 4px solid transparent;
+  border-top-width: 4px;
+  border-top-color: rgb(0 93 255);
+}
+.Map .houseList {
+  position: fixed;
+  margin: 0 auto;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  max-width: 750px;
+  background-color: rgb(255, 255, 255);
+  z-index: 99;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.Map .houseList-isblock {
+  height: 60%;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.7s;
+}
+.Map .houseList-isnone {
+  height: 0;
+  /* transform: translate3d(0, 0, 0); */
+  transition: all 0.7s;
+}
+.Map .houseList .house-mar {
+  margin-top: 65px;
+}
+.Map .houseList .houseList-title {
+  position: fixed;
+  max-height: 60%;
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  height: 50px;
+  background-color: #6fb9ff;
+}
+::-webkit-scrollbar {
+  width: 3px;
+  height: 0px;
+  background-color: rgb(214, 227, 255);
+}
+/* ::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 0 rgba(255, 6, 6, 0.8);
+  border-radius: 10px;
+} */
+::-webkit-scrollbar-thumb {
+  background-color: #89a4ff;
+  border-radius: 20px;
+}
+.Map .houseList .houseList-title a {
+  color: rgb(54, 54, 54);
+}
+.Map .houseList-house {
+  display: flex;
+  margin: 15px 10px;
+  height: 100%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(192, 192, 192);
+}
+.Map .houseList-house .houseList-house-img {
+  width: 2.5rem;
+  height: 1.8rem;
+}
+.Map .houseList-house .houseList-house-img img {
+  width: 2.5rem;
+  height: 1.8rem;
+}
+.Map .houseList-house .houseList-house-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0.2rem;
+}
+
+.Map .houseList-house .houseList-house-content .title {
+  width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.Map .houseList-house .houseList-house-content p {
+  padding: 5px 0;
+}
+
+.Map .houseList-house .houseList-house-content .spanall {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Map .houseList-house .houseList-house-content span {
+  
+  margin:0 5px 5px 0;
+}
+
+.Map .houseList-house .houseList-house-content .span1 a {
+  padding: 3px 5px;
+  background-color: rgb(200 224 255); 
+  color: rgb(85 133 255);
+}
+.Map .houseList-house .houseList-house-content .price {
+  color: rgb(255, 17, 17);
+  font-weight: bolder;
+  font-size: 0.25rem;
+}
