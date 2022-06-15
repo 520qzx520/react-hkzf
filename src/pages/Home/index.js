@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {  Outlet, useNavigate ,useRoutes,useLocation} from 'react-router-dom';
+import React, { useState ,useEffect} from 'react';
+import {  useNavigate ,useRoutes,useLocation,Outlet} from 'react-router-dom';
 //引入routes表
 import routes from '../../Routes'
 //引入antd组件
@@ -14,12 +14,13 @@ import {
 } from 'antd-mobile-icons';
 // 引入样式
 import './index.css'
-
+import RouterGuards from '../../Routes/RouterGuards';
 export default function CityList() {
   // 使用路由表
   const element = useRoutes(routes); 
   //利用 useLocation() ,监听路由变化
   const {pathname}  = useLocation() 
+
   //tabs列表
   const [tabs] = useState([
     {
@@ -54,11 +55,11 @@ export default function CityList() {
   
   return (
     <div className='Home'>
-     
-      {/* 使用路由表 */}
-      {element}
+       {/* 使用路由表 */}
+      {/* {element}  */}
       {/* 路由出口 */}
-      <Outlet />
+      {/* <Outlet />  */}
+       <RouterGuards/> 
       {/* 底部tabbar */}{/* 图标高亮 */}
       <TabBar  activeKey={pathname} 
         onChange={(value) => setRouteActive(value)} className='tabbar'

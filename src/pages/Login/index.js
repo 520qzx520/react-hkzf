@@ -22,7 +22,7 @@ export default function Login() {
       Toast.show({
         icon: 'loading',
         content: '登陆成功',
-        duration: 500,
+        duration: 1000,
       });
       navigate('/home')
     } else {

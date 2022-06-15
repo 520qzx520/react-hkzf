@@ -1,26 +1,33 @@
 import { useEffect } from 'react';
-
-import { useLocation, useNavigate } from 'react-router-dom';
-
+import { useLocation, useNavigate, Outlet, useRoutes } from 'react-router-dom';
+import routes from '..';
 export default function RouterGuards() {
+  let show = true;
+  // 使用路由表
+  const element = useRoutes(routes);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    // const timeout = setTimeout(() => verifyIsLogin(), 300);
-    // return () => clearTimeout(timeout);
-    // async function verifyIsLogin() {
-    //利用 useLocation() ,监听路由变化
     addListenRouter(pathname);
-    // }
   }, [pathname]);
-
   function addListenRouter(pathname) {
     const token = JSON.parse(localStorage.getItem('token'));
     if (pathname === '/register') {
+      show = false;
       return;
     }
     if (!token && pathname !== '/login') {
-      navigate('/login');
+      show = false;
+      navigate('/login', { replace: true });
+      return;
     }
   }
+  return (
+    <>
+      { element } 
+      {{ show } ? 
+      <Outlet /> 
+      : null}
+    </>
+  );
 }

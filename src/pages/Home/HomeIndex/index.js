@@ -66,15 +66,15 @@ export default function HomeIndex() {
     });
   };
   //通过消息订阅与发布得到城市名字
-  const PubAndSub = ()=> {
-   const newCity = JSON.parse(localStorage.getItem('hkzf_city')) || {label:'上海'}
-   setLocal(newCity.label)
-    //_用于占位,因为这个函数必须要两个参数，第一个用不到，所以只是占位
-     PubSub.subscribe('getCityName', (_, data) => {
-     localStorage.setItem('hkzf_city',JSON.stringify(data))
+  // const PubAndSub = ()=> {
+  //  const newCity = JSON.parse(localStorage.getItem('hkzf_city')) || {label:'上海'}
+  //  setLocal(newCity.label)
+  //   //_用于占位,因为这个函数必须要两个参数，第一个用不到，所以只是占位
+  //    PubSub.subscribe('getCityName', (_, data) => {
+  //    localStorage.setItem('hkzf_city',JSON.stringify(data))
       
-    });
-  }
+  //   });
+  // }
 
   // useEffect Hook 相当于看做如下三个函数的组合 //  componentDidMount()//  componentDidUpdate()//  componentWillUnmount()
   useEffect(() => {
@@ -92,12 +92,12 @@ export default function HomeIndex() {
     //经纬度
     // getLocationData()
     // ip定位
-    // getCurrentCity().then((res) => {
-    //   setLocal(res.label); 
+    getCurrentCity().then((res) => {
+      setLocal(res.label); 
     
-    // });
+    });
     //通过消息订阅与发布得到城市名字
-    PubAndSub()
+    // PubAndSub()
 
     }
   }, []);
