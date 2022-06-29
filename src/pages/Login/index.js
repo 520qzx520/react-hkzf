@@ -4,11 +4,10 @@ import './index.css';
 import LoginAndResiter from '../../components/LoginAndResiter';
 import axios from 'axios';
 import { Toast } from 'antd-mobile';
-
+import api from '../../api/Api';
 export default function Login() {
   const navigate = useNavigate();
   function onFinish(value) {
-    console.log(value);
     getLogin(value);
   }
   async function getLogin(value) {
@@ -16,9 +15,11 @@ export default function Login() {
       username: value.username,
       password: value.password,
     };
-    const res = await axios.post('http://localhost:8080/user/login', params); 
-    if(res.data.status === 200){
-      localStorage.setItem('token',JSON.stringify(res.data.body.token))
+    // const res =  await axios.post('http://localhost:8080/user/login', params);
+     const res = await api.goLogin(params); 
+     console.log(res)
+    if(res.status === 200){
+      localStorage.setItem('token',JSON.stringify(res.body.token))
       Toast.show({
         icon: 'loading',
         content: '登陆成功',
@@ -32,8 +33,7 @@ export default function Login() {
         duration: 1000,
       });
     }
-    
-    console.log(res)
+
   }
   function goRegister() {
     navigate('/register');

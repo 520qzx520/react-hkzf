@@ -1,0 +1,140 @@
+.PersonalCenter {
+  height: 100%;
+  overflow: scroll;
+  /* background-color: #f5f5f5; */
+}
+ ::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px;
+    background-color: rgb(214, 227, 255);
+  }
+  /* ::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 0 rgba(255, 6, 6, 0.8);
+    border-radius: 10px;
+  } */
+::-webkit-scrollbar-thumb {
+    background-color: #89a4ff;
+    border-radius: 20px;
+  }
+.PersonalCenter .contain {
+  /* height: 100%; */
+  padding: 0 0.35rem;
+}
+.PersonalCenter .title {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(to right, rgb(194, 230, 250), rgb(243, 253, 255));
+}
+
+.PersonalCenter .title img {
+  margin-right: 0.3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+.PersonalCenter .contain .nav {
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.PersonalCenter .contain .nav li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.PersonalCenter .contain .nav li i {
+  font-size: 0.6rem;
+}
+.PersonalCenter .contain .nav li .i1 {
+  color: rgb(14, 139, 255);
+}
+.PersonalCenter .contain .nav li .i2 {
+  color: red;
+}
+.PersonalCenter .contain .nav li .i3 {
+  color: rgb(16, 16, 255);
+}
+.PersonalCenter .contain .nav li .i4 {
+  color: rgb(0 135 255);
+}
+.PersonalCenter .contain .nav li a {
+  padding-top: 0.1rem;
+  color: black;
+}
+
+.PersonalCenter .contain .myTool {
+  margin-top: 0.5rem;
+}
+
+.PersonalCenter .contain .myTool li i {
+  font-size: 0.6rem;
+}
+
+.PersonalCenter .contain .myTool li .i1 {
+  color: blue;
+}
+.PersonalCenter .contain .myTool li .i2 {
+  color: rgb(255, 151, 66);
+}
+.PersonalCenter .contain .myTool li .i3 {
+  color: rgb(255 101 101);
+}
+.PersonalCenter .contain .myTool li .i4 {
+  color: rgb(0 201 255);
+}
+
+.PersonalCenter .contain .myTool li .i5 {
+  color: #448aa7;
+}
+.PersonalCenter .contain .myTool li .i6 {
+  color: rgb(242 101 250);
+}
+.PersonalCenter .contain .myTool li .i7 {
+  color: rgb(231 0 0);
+}
+.PersonalCenter .contain .myTool li .i8 {
+  color: rgb(0 82 104);
+}
+.PersonalCenter .contain .myTool li a {
+  padding-top: 0.1rem;
+  color: black;
+}
+.PersonalCenter .contain .myTool .myTool-list {
+  margin-top: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* background-color: white; */
+}
+
+.PersonalCenter .contain .myTool .myTool-list li {
+  width: 25%;
+  display: flex;
+  padding-bottom: 0.2rem;
+  flex-direction: column;
+  align-items: center;
+}
+.PersonalCenter .set {
+  margin-top: 0.3rem;
+}
+.PersonalCenter .set li {
+  padding: 0.2rem 0.3rem;
+  /* background-color: #f5f5f5; */
+  border-bottom: 1px solid rgb(232 232 232);
+}
+.PersonalCenter .exit {
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+}
+.PersonalCenter .exit .btn {
+background-color: rgb(112, 169, 255);
+  cursor: pointer;
+ 
+}
+.PersonalCenter .exit :hover{
+    color: rgb(23, 7, 253);
+   
+}

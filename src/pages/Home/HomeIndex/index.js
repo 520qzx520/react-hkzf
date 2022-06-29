@@ -6,6 +6,7 @@ import PubSub from 'pubsub-js';
 import { getCurrentCity } from '../../../utils';
 // 导入axios
 import axios from 'axios';
+import api from '../../../api/Api';
 //导入样式
 import './index.css';
 // 导入图片
@@ -15,6 +16,7 @@ import NavImg3 from '../../../assets/images/nav-3.png';
 import NavImg4 from '../../../assets/images/nav-4.png';
 
 export default function HomeIndex() {
+  const [swiperShow, setSwiperShow] = useState(false);
   //使用 useState 存储轮播图数据
   const [swiper, setSwiper] = useState([]);
   //使用 useState 存储租房数据
@@ -23,7 +25,7 @@ export default function HomeIndex() {
   const [consults, setConsults] = useState([]);
   //使用 useState 存储位置数据
   const [local, setLocal] = useState('广州');
-  
+
   const navigate = useNavigate();
   // nav列表
   const navs = [
@@ -34,27 +36,20 @@ export default function HomeIndex() {
   ];
   //发送请求获取轮播图片
   const getSwiper = async () => {
-    const { data: res } = await axios.get('http://localhost:8080/home/swiper');
+    const { data: res } = await api.getSwiper();
     setSwiper([...res.body]);
+    setSwiperShow(true);
   };
   //获取 租房数据
   const getGroups = async () => {
-    const { data: res } = await axios.get('http://localhost:8080/home/groups', {
-      params: {
-        area: 'AREA%7C88cff55c-aaa4-e2e0',
-      },
-    });
+    const { data: res } = await api.getGroups();
     //存储数据
     setGroups([...res.body]);
   };
 
   // 获取咨询数据
   const getConsult = async () => {
-    const { data: res } = await axios.get('http://localhost:8080/home/news', {
-      params: {
-        area: 'AREA%7C88cff55c-aaa4-e2e0',
-      },
-    });
+    const { data: res } = await api.getConsult();
     // console.log(res);
     //存储数据
     setConsults([...res.body]);
@@ -72,33 +67,30 @@ export default function HomeIndex() {
   //   //_用于占位,因为这个函数必须要两个参数，第一个用不到，所以只是占位
   //    PubSub.subscribe('getCityName', (_, data) => {
   //    localStorage.setItem('hkzf_city',JSON.stringify(data))
-      
+
   //   });
   // }
 
   // useEffect Hook 相当于看做如下三个函数的组合 //  componentDidMount()//  componentDidUpdate()//  componentWillUnmount()
   useEffect(() => {
-    
     // console.log(JSON.parse(localStorage.getItem('token')))
     const timeout = setTimeout(() => verifyIsLogin(), 300);
     return () => clearTimeout(timeout);
     async function verifyIsLogin() {
-    //发送轮播请求
-    getSwiper();
-    //发送租房请求
-    getGroups();
-    //发送咨询请求
-    getConsult();
-    //经纬度
-    // getLocationData()
-    // ip定位
-    getCurrentCity().then((res) => {
-      setLocal(res.label); 
-    
-    });
-    //通过消息订阅与发布得到城市名字
-    // PubAndSub()
-
+      //发送轮播请求
+      getSwiper();
+      //发送租房请求
+      getGroups();
+      //发送咨询请求
+      getConsult();
+      //经纬度
+      // getLocationData()
+      // ip定位
+      getCurrentCity().then((res) => {
+        setLocal(res.label);
+      });
+      //通过消息订阅与发布得到城市名字
+      // PubAndSub()
     }
   }, []);
   //点击 跳转到子页面
@@ -205,9 +197,14 @@ export default function HomeIndex() {
     <div className='HomeIndex'>
       <div className='swiper-list'>
         {/* 轮播区域 */}
-        <Swiper loop autoplay>
-          {items}
-        </Swiper>
+        {swiperShow ? (
+          <Swiper loop autoplay>
+            {items}
+          </Swiper>
+        ) : (
+          ''
+        )}
+
         {/* 顶部导航（输入框等） */}
         <div className='InputBox'>
           <div className='SearchBar'>

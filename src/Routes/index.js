@@ -1,17 +1,23 @@
-import CityList from '../pages/CityList';
-import Home from '../pages/Home';
-import HomeIndex from '../pages/Home/HomeIndex'
-import LookingRoom from '../pages/Home/LookingRoom'
-import Consulting from '../pages/Home/Consulting'
-import PersonalCenter from '../pages/Home/PersonalCenter'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-
-import Map from '../pages/Map'
-
-
+import { lazy,Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
- 
+import Login from '../pages/Login'
+import RouterGard from './RouterGuards';
+const Home = lazy(()=>import('../pages/../pages/Home'))
+const Map = lazy(()=>import('../pages/Map'))
+const Register = lazy(()=>import('../pages/Register'))
+const CityList = lazy(()=>import('../pages/CityList'))
+const HomeIndex = lazy(()=>import('../pages/Home/HomeIndex'))
+const LookingRoom = lazy(()=>import('../pages/Home/LookingRoom'))
+const Consulting = lazy(()=>import('../pages/Home/Consulting'))
+const PersonalCenter = lazy(()=>import('../pages/Home/PersonalCenter'))
+
+
+ // 实现懒加载的用Suspense包裹 定义函数
+const lazyLoad = (children) =>{
+  return <Suspense fallback={null}>
+    {children}
+  </Suspense>
+}
 export default [
   {
     path: '/',
@@ -19,7 +25,9 @@ export default [
   },
   {
     path: '/register',
-    element:<Register />
+    // element:<Register />
+    element:lazyLoad( <Register />),
+
   },
   {
     path: '/login',
@@ -27,7 +35,9 @@ export default [
   },
   {
     path: '/home/*',
-    element: <Home />,
+    // element: <Home />,
+    // 路由守卫
+    element:lazyLoad(<RouterGard><Home /></RouterGard> ),
     children: [
       {
       path: '/home/*',
@@ -35,29 +45,35 @@ export default [
     },
     {
       path: 'homeindex',
-      element: <HomeIndex />,
+      // element: <HomeIndex />,
+      element:lazyLoad( <HomeIndex />),
+
     },
     {
       path: 'lookingroom',
-      element: <LookingRoom />,
+      // element: <LookingRoom />,
+      element:lazyLoad( <LookingRoom />),
     },
     {
       path: 'consulting',
-      element: <Consulting />,
+      // element: <Consulting />,
+      element:lazyLoad( <Consulting />),
     },
     {
       path: 'personalcenter',
-      element: <PersonalCenter />,
+      // element: <PersonalCenter />,
+      element:lazyLoad( <PersonalCenter />),
     },
    
     ],
   }, 
   {
       path: '/map',
-      element: <Map />,
+      element:lazyLoad( <Map />),
     },
   {
     path: '/citylist',
-    element: <CityList />,
+    // element: <CityList />,
+    element:lazyLoad( <CityList />),
   },
 ];

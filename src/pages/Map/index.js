@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import NavHeader from '../../components/NavHeader';
-import axios from 'axios';
+import api from '../../api/Api';
 import { Button, Toast } from 'antd-mobile';
 import './index.css';
 export default function Map() {
@@ -11,7 +11,7 @@ export default function Map() {
   const [isShowList, setisShowList] = useState(false);
   useEffect(() => {
     initMap();
-  }, [isShowList]);
+  }, []);
 
   //初始化地图实例
   function initMap() {
@@ -39,8 +39,12 @@ export default function Map() {
     addlistenMovestart(map);
     function addlistenMovestart(map) {
       map.addEventListener('movestart', () => {
-        console.log(isShowList)
-        isShowList && setisShowList(false);
+      
+        // if(isShowList){
+          
+ setisShowList(false) 
+        // }
+        
       });
     }
     //获取城市房数信息
@@ -48,13 +52,7 @@ export default function Map() {
       // 加载中
       const contain = loading();
       try {
-        const { data: res } = await axios.get(
-          `http://localhost:8080/area/map`,
-          {
-            params: {
-              id: value,
-            },
-          },
+        const { data: res } = await api.getCityRooms( { params: {id: value,} },
         );
         const data = res.body;
         data.forEach((item) => {
@@ -192,11 +190,7 @@ export default function Map() {
       // 加载中
       const contain = loading();
       console.log(contain);
-      const { data: res } = await axios.get(`http://localhost:8080/houses`, {
-        params: {
-          cityId: id,
-        },
-      });
+      const { data: res } =  await api.getHouseList( { params: { cityId: id} })
       
       sethouse([...res.body.list]);
       // 加载完关闭

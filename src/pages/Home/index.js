@@ -56,9 +56,9 @@ export default function CityList() {
   return (
     <div className='Home'>
        {/* 使用路由表 */}
-      {/* {element}  */}
+      {element} 
       {/* 路由出口 */}
-      {/* <Outlet />  */}
+      <Outlet /> 
        <RouterGuards/> 
       {/* 底部tabbar */}{/* 图标高亮 */}
       <TabBar  activeKey={pathname} 

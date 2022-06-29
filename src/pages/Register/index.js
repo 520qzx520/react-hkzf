@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginAndResiter from '../../components/LoginAndResiter';
-import axios from 'axios';
+import api from '../../api/Api';
 import { useNavigate } from 'react-router-dom';
 import NavHeader from '../../components/NavHeader';
 import './index.css'
@@ -22,11 +22,8 @@ export default function Register() {
       username: value.username,
       password: value.password,
     };
-    const res = await axios.post(
-      'http://localhost:8080/user/registered',
-      params,
-    );
-    if (res.data.status === 200) {
+    const res = await api.goRegister(params);
+    if (res.status === 200) {
       Toast.show({
         icon: 'loading',
         content: '账号创建成功',
