@@ -1,0 +1,207 @@
+.HouseDetail{
+    background-color: rgb(241, 241, 241);
+}
+
+.HouseDetail .showDetail{
+   /* background-color: #ddd; */
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+.HouseDetail .swiper img{
+    width: 100%;
+    height: 210px;
+}
+/* .HouseDetail .showDetail .showDetail-content{
+    
+} */
+.HouseDetail .showDetail .showDetail-content .title{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+   
+}
+
+.HouseDetail .showDetail .showDetail-content .title span{
+    display: inline-block;
+    margin-top: 5px;
+    padding:1px 5px;
+    margin-right: 5px;
+    background-color: rgb(118, 182, 255);
+}
+.HouseDetail .showDetail .showDetail-content  .price{
+    
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.HouseDetail .showDetail .showDetail-content  .price h2{
+    padding: 5px;
+    color: rgb(255, 23, 23);
+}
+
+.HouseDetail .showDetail .showDetail-content  .price p{
+    color: #818181;
+    font-size: 14px;
+}
+
+.HouseDetail .showDetail .showDetail-content .type{
+    margin-top: 10px;
+}
+
+.HouseDetail .showDetail .showDetail-content .type div{
+    display: flex;
+
+}
+
+.HouseDetail .showDetail .showDetail-content .type div span{
+    padding-bottom:5px;
+    width: 50%;
+}
+
+.HouseDetail  .map{
+    padding: 10px;
+    height: 100px;
+    background-color: white;
+}
+
+
+
+.HouseDetail .houseMating{
+    margin-top: 10px;
+    padding:10px 10px 0 10px;
+    background-color: white;
+
+}
+
+.HouseDetail .houseMating  h3{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.HouseDetail .houseMating .houseMating-content{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.HouseDetail .houseMating  li{
+    width: 20%;
+    text-align:center;
+    padding-bottom: 10px;
+}
+
+.HouseDetail .houseMating  li i{
+    font-size: 20px;
+} 
+.HouseDetail .houseThing .houseThing-contain img{
+    margin-right: 0.3rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+}
+.HouseDetail .houseThing{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+}
+.HouseDetail .houseThing h3{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.HouseDetail .houseThing  .houseThing-contain{
+    padding-top: 10px;
+   
+}
+.HouseDetail .houseThing  .houseThing-contain .flex{
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.HouseDetail .houseThing  .houseThing-contain .person{
+    display: flex;
+    align-items: center
+}
+.HouseDetail .houseThing  .houseThing-contain .person p{
+    padding:2px;
+}
+.HouseDetail .houseThing  .houseThing-contain a{
+    display: inline-block;
+    margin-right: 10px;
+    padding:3px 7px;
+    background-color: rgb(112, 174, 255);
+    color: white;
+    
+}
+
+.HouseDetail .houseThing  .houseThing-contain .consult{
+    margin-top: 10px;
+}
+.HouseDetail .houseThing  .houseThing-contain .consult p{
+    text-align:justify;
+    line-height: 20px;
+    font-weight: bolder;
+}
+.HouseDetail .map{
+    width: 100%;
+    height: 250px;
+}
+.HouseDetail #houseMap{
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+}
+
+  .rect{
+    background-color: rgb(5, 105, 255);
+}
+
+.HouseDetail .map .rect {
+    position: absolute;
+    
+    height: 20px;
+    line-height: 20px;
+    padding: 0 3px;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: rgb(0 93 255);
+  }
+  .HouseDetail .map .rect .housename {
+    display: inline-block;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .HouseDetail .map .rect .housenum {
+    display: inline-block;
+  
+  }
+  .HouseDetail .map .rect .arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border: 4px solid transparent;
+    border-top-width: 4px;
+    border-top-color: rgb(0 93 255);
+  }
+
+ .HouseDetail  .Item-Btn{
+   margin-top: 25px;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    text-align: center; 
+     z-index: 9999;
+} 
+
+.HouseDetail  .Item-Btn  Button{
+    padding:10px !important;
+    width: 33.33%;
+}

@@ -1,0 +1,29 @@
+.ToRent .adm-list-card .adm-list-body {
+  border-radius: 0;
+}
+
+.ToRent .extraPart {
+  width: 50px;
+}
+.ToRent .adm-list-body .adm-list-body-inner .adm-list-item {
+  padding-left: 0 !important;
+}
+
+.ToRent p {
+  padding: 7px 0;
+}
+.ToRent .adm-selector-item {
+  background-color: white;
+}
+
+.ToRent .Item-Btn {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  text-align: center;
+}
+
+.ToRent .Item-Btn Button {
+  padding: 10px !important;
+  width: 50%;
+}

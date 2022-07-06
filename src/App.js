@@ -7,8 +7,9 @@ function App() {
   const elements = useRoutes(routes);
   return (
     <div className='App'>
-      {/* <RouterGuards/> */}
+      <RouterGuards>
       {elements}
+      </RouterGuards>
       {/* <Routes>
     <Route path="/login" element={<Login />}></Route>
       </Routes> */}

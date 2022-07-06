@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { NavBar } from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getCurrentCity } from '../../utils';
 import './index.css';
 import NavHeader from '../../components/NavHeader';
 import { List, AutoSizer } from 'react-virtualized';
-import PubSub from 'pubsub-js'
+import { Toast } from 'antd-mobile'
 export default function Citylist() {
   const navigate = useNavigate();
   //分类后存放数据
@@ -22,15 +21,24 @@ export default function Citylist() {
   }
   //获取所有城市数据
   const getCityListData = async () => {
+    // loading
+    const toastClose =  Toast.show({
+      icon: 'loading',
+      content: '加载中…',
+      duration:0
+    })
     const { data: res } = await axios.get(
       'http://localhost:8080/area/city?level=1',
     );
+    // 关闭loading
+    toastClose.close()
     //处理好的数据结构赋值
     const { lists, index } = formatCityData(res.body);
     //数组里面对象数组，把所有的城市放进去
     setCityLists([{ ...lists }]);
     // 标签ABCD等用于分类
     setCityIndex(index);
+    
   };
   //处理城市数据
   function formatCityData(list) {
@@ -148,7 +156,8 @@ export default function Citylist() {
     }
     //改变城市事件
     const changeCity =async (city) => {
-     PubSub.publish('getCityName',city)
+    //  PubSub.publish('getCityName',city)
+     localStorage.setItem('hkzf_city',JSON.stringify(city))
      navigate(-1);
     }
   //每行数据返回值，城市列表

@@ -1,0 +1,18 @@
+ .adm-dropdown-popup{
+     margin: 0 auto;
+    overflow: scroll !important;
+    max-width: 750px;
+   
+}
+
+.FilterPicter .Item-Btn{
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    text-align: center;
+} 
+
+.FilterPicter .Item-Btn  Button{
+    padding:10px !important;
+    width: 50%;
+}

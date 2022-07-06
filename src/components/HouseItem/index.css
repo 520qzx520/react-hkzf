@@ -1,0 +1,60 @@
+ .houseList-house {
+    display: flex;
+    padding: 15px 10px;
+    align-items: center;
+    /* height: 100%; */
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+  }
+ .houseList-house .houseList-house-img {
+    width: 130px;
+    height:100px;
+  }
+ .houseList-house .houseList-house-img img {
+  width: 130px;
+  height:100px;
+  }
+ .houseList-house .houseList-house-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 0.2rem;
+  }
+  
+ .houseList-house .houseList-house-content .title {
+    width: 230px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+ .houseList-house .houseList-house-content p {
+    padding: 5px 0;
+  }
+  
+ /* .houseList-house .houseList-house-content .spanall {
+    display: flex;
+    flex-wrap: wrap;
+  }
+   */
+ .houseList-house .houseList-house-content span {
+    
+    margin:0 5px 5px 0;
+  }
+  
+ .houseList-house .houseList-house-content .span1 a {
+    padding: 3px 5px;
+    background-color: rgb(200 224 255); 
+    color: rgb(85 133 255);
+  }
+ .houseList-house .houseList-house-content .price {
+    color: rgb(255, 17, 17);
+    font-weight: bolder;
+    font-size: 0.25rem;
+  }
+
+  .loading{
+    line-height: 120px;
+    text-align: center;
+    height: 100px;
+    background-color: #f6f5f6;
+  }

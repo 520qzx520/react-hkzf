@@ -1,9 +1,12 @@
 import React, { useState ,useEffect} from 'react';
 import {  useNavigate ,useRoutes,useLocation,Outlet} from 'react-router-dom';
+// 导入BASE_URL
+import {BASE_URL} from '../../utils/url'
 //引入routes表
 import routes from '../../Routes'
 //引入antd组件
 import { TabBar } from 'antd-mobile';
+import {getToken} from '../../utils/power'
 //引入antd组件
 import {
   AppOutline,
@@ -15,6 +18,7 @@ import {
 // 引入样式
 import './index.css'
 import RouterGuards from '../../Routes/RouterGuards';
+import api from '../../api/Api';
 export default function CityList() {
   // 使用路由表
   const element = useRoutes(routes); 
@@ -52,14 +56,28 @@ export default function CityList() {
     navigate(path)
   };
 
-  
+  useEffect(()=>{
+    getUSerData()
+  },[])
+  // 判断token有效性
+ async function getUSerData(){
+    const res = await api.getUSerData({
+      headers:{
+        authorization: getToken()
+      }
+    })
+    if(res.data.status !==200){
+      navigate('/login',{replace:true})
+    }
+    console.log(res)
+  }
   return (
     <div className='Home'>
        {/* 使用路由表 */}
-      {element} 
+      {/* {element}  */}
       {/* 路由出口 */}
       <Outlet /> 
-       <RouterGuards/> 
+       {/* <RouterGuards/>  */}
       {/* 底部tabbar */}{/* 图标高亮 */}
       <TabBar  activeKey={pathname} 
         onChange={(value) => setRouteActive(value)} className='tabbar'

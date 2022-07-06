@@ -4,60 +4,6 @@
   height: 4.2rem;
 }
 
-.HomeIndex .swiper-list .InputBox {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  top: 0.5rem;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-.HomeIndex .swiper-list .InputBox .local {
-  position: absolute;
-  display: flex;
-
-  align-items: center;
-  top: 50%;
-  transform: translate(0, -50%);
-  left: 20px;
-}
-.HomeIndex .swiper-list .InputBox .local .line{
-  
-  width: 1px;
-  height:20px;
-  margin-left: 10px;
-  border-left: 1px solid rgb(195 194 194);
-}
-.HomeIndex .swiper-list .InputBox .local span {
-  margin-right: 0.1rem;
-}
-.HomeIndex .swiper-list .InputBox .SearchBar {
-  position: relative;
-  width: 70%;
-}
-.HomeIndex
-  .swiper-list
-  .InputBox
-  .adm-search-bar
-  .adm-search-bar-input-box
-  .adm-search-bar-input-box-icon {
-  padding-left: 75px;
-  font-size: 16px;
-}
-.HomeIndex .swiper-list .InputBox input {
-  font-size: 14px;
-}
-.HomeIndex .swiper-list .InputBox .icon {
-  margin-left: 0.15rem;
-  color: rgb(245, 245, 245);
-}
-
-.HomeIndex .swiper-list .InputBox .icon1 {
-  /* margin-left: .15rem; */
-  color: rgb(110, 110, 110);
-}
 .HomeIndex .swiper-list .swiper-img img {
   height: 4.2rem;
 }

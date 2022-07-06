@@ -4,6 +4,9 @@ import NavHeader from '../../components/NavHeader';
 import api from '../../api/Api';
 import { Button, Toast } from 'antd-mobile';
 import './index.css';
+// 导入BASE_URL
+import {BASE_URL} from '../../utils/url'
+import HouseItem from '../../components/HouseItem';
 export default function Map() {
   let type = '区';
   let first = true;
@@ -209,24 +212,7 @@ export default function Map() {
   //渲染房子函数
   const Renderhouse = () => {
     return house.map((item) => (
-      <div className='houseList-house' key={item.houseCode}>
-        <div className='houseList-house-img'>
-          <img src={`http://localhost:8080${item.houseImg}`} />
-        </div>
-        <div className='houseList-house-content'>
-          <h3>{handelStr(item.desc, 18)}</h3>
-          <p className='title'>{item.title}</p>
-          <div className='spanall'>
-            {item.tags.map((tag) => (
-              <span className='span1' key={tag}>
-                <a key={tag}> {tag}</a>
-              </span>
-            ))}
-          </div>
-
-          <p className='price'>{item.price}元/月</p>
-        </div>
-      </div>
+      <HouseItem item={item} key={Math.random()}/>
     ));
   };
   // 处理字符串函数
@@ -236,11 +222,6 @@ export default function Map() {
   // 渲染
   return (
     <div className='Map'>
-      {/*   <NavHeader onBack={()=>{
-                console.log('点击')
-            }}>
-                地图找房
-            </NavHeader> */}
       <NavHeader>地图找房</NavHeader>
       <div id='container'></div>
       <div

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, Toast, Grid, SearchBar } from 'antd-mobile';
 import { EnvironmentOutline, DownFill } from 'antd-mobile-icons';
 import { useNavigate } from 'react-router-dom';
-import PubSub from 'pubsub-js';
+import SearchHearch from '../../../components/SearchHeader';
 import { getCurrentCity } from '../../../utils';
-// 导入axios
-import axios from 'axios';
+
 import api from '../../../api/Api';
 //导入样式
 import './index.css';
@@ -14,7 +13,8 @@ import NavImg1 from '../../../assets/images/nav-1.png';
 import NavImg2 from '../../../assets/images/nav-2.png';
 import NavImg3 from '../../../assets/images/nav-3.png';
 import NavImg4 from '../../../assets/images/nav-4.png';
-
+// 导入BASE_URL
+import {BASE_URL} from '../../../utils/url'
 export default function HomeIndex() {
   const [swiperShow, setSwiperShow] = useState(false);
   //使用 useState 存储轮播图数据
@@ -32,7 +32,7 @@ export default function HomeIndex() {
     { id: '01', img: NavImg1, title: '整租', path: '/home/lookingroom' },
     { id: '02', img: NavImg2, title: '合租', path: 'roommates' },
     { id: '03', img: NavImg3, title: '地图找房', path: 'mapfindroom' },
-    { id: '04', img: NavImg4, title: '去出租', path: 'torent' },
+    { id: '04', img: NavImg4, title: '去出租', path: '/torent' },
   ];
   //发送请求获取轮播图片
   const getSwiper = async () => {
@@ -118,7 +118,7 @@ export default function HomeIndex() {
           Toast.show(`你点击${index}`);
         }}
       >
-        <img src={`http://localhost:8080${item.imgSrc}`} />
+        <img src={`${BASE_URL}${item.imgSrc}`} />
       </div>
     </Swiper.Item>
   ));
@@ -146,7 +146,7 @@ export default function HomeIndex() {
                 <p>{item.desc}</p>
               </li>
             </ul>
-            <img src={`http://localhost:8080${item.imgSrc}`} alt='' />
+            <img src={`${BASE_URL}${item.imgSrc}`} alt='' />
           </div>
         </Grid.Item>
       );
@@ -172,7 +172,7 @@ export default function HomeIndex() {
     return consults.map((item) => {
       return (
         <div className='consults-contain' key={item.id}>
-          <img src={`http://localhost:8080${item.imgSrc}`} alt='' />
+          <img src={`${BASE_URL}${item.imgSrc}`} alt='' />
           <div className='consults-contain-right'>
             <p>{item.title}</p>
             <div className='consults-contain-right-bottom'>
@@ -205,22 +205,8 @@ export default function HomeIndex() {
           ''
         )}
 
-        {/* 顶部导航（输入框等） */}
-        <div className='InputBox'>
-          <div className='SearchBar'>
-            <div className='local' onClick={() => goShowCity()}>
-              <span>{local}</span>
-              <DownFill fontSize={10} className='icon1' />
-              <div className='line'></div>
-            </div>
-            <SearchBar placeholder='请输入小区/地址' />
-          </div>
-          <EnvironmentOutline
-            className='icon'
-            fontSize={20}
-            onClick={() => goMap()}
-          />
-        </div>
+        {/* 顶部导航（输入框等）封装的 */}
+        <SearchHearch cityName={local}/>
       </div>
       {/* nav区域 */}
       <Grid columns={4} gap={8} className='nav-list'>

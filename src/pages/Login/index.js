@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
 import LoginAndResiter from '../../components/LoginAndResiter';
-import axios from 'axios';
+import { setToken } from '../../utils/power';
 import { Toast } from 'antd-mobile';
 import api from '../../api/Api';
 export default function Login() {
@@ -15,11 +15,11 @@ export default function Login() {
       username: value.username,
       password: value.password,
     };
-    // const res =  await axios.post('http://localhost:8080/user/login', params);
      const res = await api.goLogin(params); 
      console.log(res)
     if(res.status === 200){
-      localStorage.setItem('token',JSON.stringify(res.body.token))
+      
+      setToken(res.data.body.token)
       Toast.show({
         icon: 'loading',
         content: '登陆成功',
@@ -33,7 +33,6 @@ export default function Login() {
         duration: 1000,
       });
     }
-
   }
   function goRegister() {
     navigate('/register');

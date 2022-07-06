@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import {  Dialog,Toast, Button} from 'antd-mobile'
 import './index.css';
@@ -17,21 +17,39 @@ import {
   GiftOutline, //礼物
   DeleteOutline, //垃圾箱
 } from 'antd-mobile-icons';
+import api from '../../../api/Api';
+import { getToken,removeToken } from '../../../utils/power';
 export default function PersonalCenter() {
+  useEffect(()=>{
+    getFavoritesList()
+  },[])
     const navigate = useNavigate()
     function exitLogin(){
         Dialog.confirm({
             content: '是否退出登录',
-            onConfirm:  () => {
+            onConfirm:  async() => {
               Toast.show({
                 icon: 'success',
                 content: '成功退出登录',
                 position: 'bottom',
               })
-              localStorage.removeItem('token')
-               navigate('/login')
+          const res =  await  api.loginOut()
+              removeToken()
+              navigate('/login')
+               console.log(res)
             },
           })
+    }
+
+    // 收藏列表
+    const getFavoritesList = async()=>{
+      const {data:res} = await api.getFavoritesList()
+      if(res.status === 200){
+        console.log(res)
+      }else{
+        return 
+      }
+      
     }
   return (
     <div className='PersonalCenter'>
@@ -40,6 +58,7 @@ export default function PersonalCenter() {
         <h2>尊贵的用户</h2>
       </div>
       <div className='contain'>
+      {/* <h3>我的工具</h3> */}
         <ul className='nav'>
           <li>
             <i className='i1'>
@@ -120,14 +139,14 @@ export default function PersonalCenter() {
           </ul>
         </div>
       </div>
-      <ul className='set'>
+      {/* <ul className='set'>
         <li>
           <h3>设置</h3>
         </li>
         <li>
           <h3>账号管理</h3>
         </li>
-      </ul>
+      </ul> */}
       <div className='exit' >
       <Button className='btn' size='small' color='primary' onClick={()=>exitLogin()}>退出登录</Button>
           {/* <a href='#' onClick={()=>exitLogin()}></a> */}

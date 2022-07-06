@@ -1,0 +1,57 @@
+.SearchHearch{
+   width: 100%;
+}
+.SearchHearch  .InputBox {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .SearchHearch  .InputBox .local {
+    position: absolute;
+    display: flex;
+  
+    align-items: center;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 20px;
+  }
+  .SearchHearch  .InputBox .local .line{
+    
+    width: 1px;
+    height:20px;
+    margin-left: 10px;
+    border-left: 1px solid rgb(195 194 194);
+  }
+  .SearchHearch  .InputBox .local span {
+    margin-right: 0.1rem;
+  }
+  .SearchHearch  .InputBox .SearchBar {
+    position: relative;
+    width: 85%;
+  }
+  .SearchHearch
+    
+    .InputBox
+    .adm-search-bar
+    .adm-search-bar-input-box
+    .adm-search-bar-input-box-icon {
+    padding-left: 75px;
+    font-size: 16px;
+  }
+  .SearchHearch  .InputBox input {
+    font-size: 14px;
+  }
+  .SearchHearch  .InputBox .icon {
+    margin-left: 0.15rem;
+    color: rgb(245, 245, 245);
+  }
+  
+  .SearchHearch  .InputBox .icon1 {
+    /* margin-left: .15rem; */
+    color: rgb(110, 110, 110);
+  }

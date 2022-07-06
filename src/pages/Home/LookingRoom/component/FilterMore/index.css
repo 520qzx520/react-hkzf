@@ -1,0 +1,41 @@
+.FilterMore_default{
+    margin:  20px 10px;
+    /* padding: 20px 0; */
+  
+}
+
+.FilterMore_default .adm-selector{
+    margin-top: 10px;
+}
+
+.FilterMore-Item-Btn{
+    position:sticky;
+    background-color: white;
+    /* height: 50px;
+    line-height: 50px; */
+    bottom: 0;
+    /* padding-top: 30px; */
+    text-align: center;
+} 
+
+.FilterMore-Item-Btn  Button{
+    padding:10px !important;
+    width: 50%;
+   
+}
+.adm-popup-body-position-right {
+    max-width: 750px;
+    /* position: absolute;
+    right: 50%;
+    top: 0; */
+    /* transform: translate(0,50%); */
+    overflow: scroll;
+}
+.adm-capsule-tabs-tab-list {
+    flex-wrap: wrap;
+}
+
+.adm-capsule-tabs-tab-list .adm-capsule-tabs-tab-wrapper {
+    flex: none;
+    padding:  6px;
+}

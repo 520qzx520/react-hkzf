@@ -19,13 +19,17 @@
 .PersonalCenter .contain {
   /* height: 100%; */
   padding: 0 0.35rem;
+  /* box-shadow: 1px 1px 5px #ddd; */
 }
 .PersonalCenter .title {
-  padding: 0.5rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   width: 100%;
-  background: linear-gradient(to right, rgb(194, 230, 250), rgb(243, 253, 255));
+  /* background: linear-gradient(to right, rgb(194, 230, 250), rgb(243, 253, 255)); */
+  background: url(../../../assets/images/mycenter.jpg) no-repeat ;
+  background-size: 100% 100%;
+  box-shadow: 5px 5px 7px #4e7f91;
 }
 
 .PersonalCenter .title img {
@@ -35,7 +39,7 @@
   border-radius: 50%;
 }
 .PersonalCenter .contain .nav {
-  margin-top: 0.3rem;
+  padding-top: 0.5rem;
   display: flex;
   justify-content: space-between;
 }
@@ -66,7 +70,13 @@
 
 .PersonalCenter .contain .myTool {
   margin-top: 0.5rem;
+  /* border: 1px solid #ddd; */
+  /* box-shadow: 0px 0px 5px #7a99ff; */
 }
+
+/* .PersonalCenter .contain .myTool h3{
+  text-align: center;
+} */
 
 .PersonalCenter .contain .myTool li i {
   font-size: 0.6rem;
@@ -127,7 +137,7 @@
 .PersonalCenter .exit {
   text-align: center;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 52px;
 }
 .PersonalCenter .exit .btn {
 background-color: rgb(112, 169, 255);
