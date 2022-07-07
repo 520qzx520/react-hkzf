@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate ,Outlet} from 'react-router';
 import {  Dialog,Toast, Button} from 'antd-mobile'
 import './index.css';
 import myhomeJpg from './img/login2.jpg';
@@ -20,9 +20,7 @@ import {
 import api from '../../../api/Api';
 import { getToken,removeToken } from '../../../utils/power';
 export default function PersonalCenter() {
-  useEffect(()=>{
-    getFavoritesList()
-  },[])
+
     const navigate = useNavigate()
     function exitLogin(){
         Dialog.confirm({
@@ -41,15 +39,12 @@ export default function PersonalCenter() {
           })
     }
 
-    // 收藏列表
-    const getFavoritesList = async()=>{
-      const {data:res} = await api.getFavoritesList()
-      if(res.status === 200){
-        console.log(res)
-      }else{
-        return 
-      }
-      
+   
+    const favoritesList = ()=>{
+      navigate('/favorites')
+    }
+    const publishList = ()=>{
+      navigate('/publishlist')
     }
   return (
     <div className='PersonalCenter'>
@@ -60,11 +55,11 @@ export default function PersonalCenter() {
       <div className='contain'>
       {/* <h3>我的工具</h3> */}
         <ul className='nav'>
-          <li>
+          <li onClick={publishList}>
             <i className='i1'>
               <FileOutline />
             </i>
-            <a href='#'> 全部订单 </a>
+            <a> 全部订单 </a>
           </li>
           <li>
             <i className='i2'>
@@ -106,11 +101,11 @@ export default function PersonalCenter() {
               </i>
               <a href='#'>分享</a>
             </li>
-            <li>
+            <li onClick={favoritesList}>
               <i className='i4'>
                 <StarOutline />
               </i>
-              <a href='#'>收藏</a>
+              <a>收藏</a>
             </li>
             <li>
               <i className='i5'>
@@ -139,14 +134,7 @@ export default function PersonalCenter() {
           </ul>
         </div>
       </div>
-      {/* <ul className='set'>
-        <li>
-          <h3>设置</h3>
-        </li>
-        <li>
-          <h3>账号管理</h3>
-        </li>
-      </ul> */}
+  
       <div className='exit' >
       <Button className='btn' size='small' color='primary' onClick={()=>exitLogin()}>退出登录</Button>
           {/* <a href='#' onClick={()=>exitLogin()}></a> */}

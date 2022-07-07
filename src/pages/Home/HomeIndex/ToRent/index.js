@@ -7,8 +7,12 @@ import {
   ImageUploader,
   Selector,
   Button,
+  Toast
 } from 'antd-mobile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
+
 import './index.css';
 import {
   BankcardOutline,
@@ -21,10 +25,23 @@ import {
   TransportQRcodeOutline,
 } from 'antd-mobile-icons';
 import api from '../../../../api/Api';
-import requests from '../../../../api/requests';
+import { getToken } from '../../../../utils/power';
 export default function ToRent() {
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  useEffect(() => {
+    const id = params.get('id');
+    setcommunity(params.get('name'));
+    setAllData((item) => {
+      return { ...item, id: id };
+    });
+  }, []);
+  // 小区名称
+  const [community, setcommunity] = useState('');
   // 选中的传给服务器的值（id）
   const [allData, setAllData] = useState({
+    // 小区id
+    id: '',
     // 图片
     fileList: [],
     // 房屋标题
@@ -36,7 +53,7 @@ export default function ToRent() {
     // 面积
     size: '',
     // 朝向
-    oriented: [],
+    oriented: '',
     // 楼层
     floor: '',
     // 房屋配套
@@ -49,7 +66,7 @@ export default function ToRent() {
     // 房屋类型
     roomType: '',
     // 朝向
-    oriented: [],
+    oriented:'',
     // 楼层
     floor: '',
   });
@@ -175,6 +192,10 @@ export default function ToRent() {
       { label: '西北', value: 'ORIEN|80795f1a-e32f-feb9' },
     ],
   ];
+  // 进入搜索页面
+  const getName = () => {
+    navigate('/torentsearch');
+  };
   // 点击进入选择页面
   function handleClick(type) {
     setVisible(true);
@@ -202,8 +223,8 @@ export default function ToRent() {
     console.log(type, arr);
     setSelect((item) => {
       let value = arr.items[0].label;
-
-      return { ...item, [type]: value };
+     
+      return { ...item, [type]:value };
     });
   }
 
@@ -224,23 +245,20 @@ export default function ToRent() {
 
   //   上传图片
   // 图片处理要求返回一个promise对象
-  const Upload =  (file) => {
-   return new Promise((resolve, reject) => {
+  const Upload = (file) => {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
       reader.onload = () => {
-        file.url =  reader.result;
+        file.url = reader.result;
         // 存储图片 ...allData.fileList 保留上一次的图片
         setAllData((item) => {
-
           return { ...item, ['fileList']: [...allData.fileList, file] };
         });
         resolve(file);
       };
-    })
-  }; 
-
- 
+    });
+  };
 
   //   取消按钮
   const closeBtn = () => {};
@@ -252,7 +270,7 @@ export default function ToRent() {
   const addImg = async () => {
     const { fileList } = allData;
     let form = new FormData();
-    let houseImg = ''
+    let houseImg = '';
     if (fileList.length > 0) {
       fileList.forEach((item) => {
         form.append('file', item);
@@ -263,22 +281,52 @@ export default function ToRent() {
           'Content-Type ': 'multipart/form-data',
         },
       });
-      houseImg = res.data.body.join('|')
+      houseImg = res.data.body.join('|');
+      publishHouse( houseImg);
       console.log(houseImg);
     }
   };
   // 删除图片
-  const Delete = (data)=>{
-   const newList = (allData.fileList).filter((item)=>{
-     console.log(item)
-      return data !== item
-    })
+  const Delete = (data) => {
+    const newList = allData.fileList.filter((item) => {
+      console.log(item);
+      return data !== item;
+    });
     // 重新设置图片
     setAllData((item) => {
       return { ...item, ['fileList']: [...newList] };
     });
-  }
+  };
 
+  // 发布房源
+  const publishHouse = async (houseImg) => {
+    let params = {
+      title: allData.title,
+      description: allData.description,
+      houseImg: houseImg,
+      oriented: allData.oriented,
+      supporting: allData.supporting,
+      price: allData.price,
+      roomType:  allData.floor,
+      size: allData.size,
+      floor:allData.roomType,
+      community: allData.id,
+    };
+    try {
+       const res = await api.publishHouse( params);  Toast.show({
+          content: '发布成功',
+          duration: 1000,
+        });
+    } catch (error) {
+        Toast.show({
+          content: '不行哦，稍后请重试',
+          duration: 1000,
+        });
+     
+    }
+   
+    
+  };
   return (
     <div className='ToRent'>
       {/* 头部  */}
@@ -293,33 +341,40 @@ export default function ToRent() {
         }}
         onConfirm={(data, arr) => onConfirm(pickerValue, arr)}
         onSelect={(val, arr) =>
-          getSelectData(pickerValue, val, arr, allData[pickerValue])
+          getSelectData(pickerValue, val[0], arr, allData[pickerValue])
         }
       ></Picker>
       {/* list列表 */}
       <List mode='card' header='房源信息'>
-        <List.Item extra='请输入小区名称'>小区名称</List.Item>
+        <List.Item
+          extra={community ? community : '请输入小区名称'}
+          onClick={getName}
+        >
+          小区名称
+        </List.Item>
         <Form layout='horizontal'>
           <Form.Item
             label='租 金'
-            extra={<div className='extraPart'>￥/月</div>}
+            extra={<div className='extraPart'>￥/月</div>} 
           >
             <Input
               placeholder='请输入租金'
               clearable
               value={allData.price}
               onChange={(val) => getSelectData('price', val)}
+         
             />
           </Form.Item>
           <Form.Item
             label='建筑面积'
-            extra={<div className='extraPart'>平方米</div>}
+            extra={<div className='extraPart'>平方米</div>} 
           >
             <Input
               placeholder='请输入租金'
               clearable
               value={allData.size}
               onChange={(val) => getSelectData('size', val)}
+           
             />
           </Form.Item>
         </Form>
@@ -356,10 +411,8 @@ export default function ToRent() {
             value={allData.fileList}
             accept={'image/jpeg' || ' image/jpg' || 'image/gif' || 'image/png'}
             upload={Upload}
-            multiple = {true}
-            onDelete = {Delete}
-           
-            
+            multiple={true}
+            onDelete={Delete}
           />
         </List.Item>
         <p>房屋配套</p>
@@ -393,6 +446,7 @@ export default function ToRent() {
           shape='rectangular'
           onClick={sureBtn}
           size='small'
+       
         >
           确定
         </Button>

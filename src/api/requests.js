@@ -101,6 +101,7 @@ requests.interceptors.request.use(config => {
      
     ) {
         // 添加请求头
+        
         config.headers.authorization =getToken()
     } 
    

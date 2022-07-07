@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router';
 import NavHeader from '../../components/NavHeader';
 import api from '../../api/Api';
 import { Button, Toast } from 'antd-mobile';
@@ -12,10 +12,15 @@ export default function Map() {
   let first = true;
   const [house, sethouse] = useState([]);
   const [isShowList, setisShowList] = useState(false);
+  const navigate = useNavigate()
   useEffect(() => {
     initMap();
   }, []);
+  const goHouseDetail = (data)=>{
+    // navigate(`/housedetail?id=${id}`)
+    navigate(`/housedetail?id=${data}`)
 
+  }
   //初始化地图实例
   function initMap() {
     const map = new window.BMapGL.Map('container');
@@ -212,7 +217,7 @@ export default function Map() {
   //渲染房子函数
   const Renderhouse = () => {
     return house.map((item) => (
-      <HouseItem item={item} key={Math.random()}/>
+      <HouseItem item={item} key={Math.random()} goHouseDetail={()=>goHouseDetail(item.houseCode)} />
     ));
   };
   // 处理字符串函数

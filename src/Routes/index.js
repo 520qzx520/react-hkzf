@@ -12,7 +12,9 @@ const Consulting = lazy(() => import('../pages/Home/Consulting'));
 const PersonalCenter = lazy(() => import('../pages/Home/PersonalCenter'));
 const HouseDetail = lazy(() => import('../pages/HouseDetail/index'));
 const ToRent = lazy(() => import('../pages/Home/HomeIndex/ToRent'));
-
+const Favorites = lazy(()=>import ('../pages/Home/PersonalCenter/FavoritesList'))
+const ToRentSearch = lazy(()=>import('../pages/Home/HomeIndex/ToRent/Search'))
+const PublishList = lazy(()=>import('../pages/Home/PersonalCenter/PublishList'))
 // 实现懒加载的用Suspense包裹 定义函数
 const lazyLoad = (children) => {
   return <Suspense fallback={null}>{children}</Suspense>;
@@ -61,10 +63,8 @@ export default [
         path: 'personalcenter',
         // element: <PersonalCenter />,
         element: lazyLoad(<PersonalCenter />),
-      },
-   
-       
      
+      },
     ],
   },
   {
@@ -81,7 +81,28 @@ export default [
     element: lazyLoad(<CityList />),
   },
   {
-    path: 'torent',
+    path: '/torent',
     element: lazyLoad(<ToRent />),
   },
+ {
+            
+    path: 'torentsearch',
+    // element: <PersonalCenter />,
+    element: lazyLoad(<ToRentSearch />),
+  },
+  {
+            
+    path: 'favorites',
+    // element: <PersonalCenter />,
+    element: lazyLoad(<Favorites />),
+  },
+  {
+            
+    path: 'publishlist',
+    // element: <PersonalCenter />,
+    element: lazyLoad(<PublishList />),
+  },
+
+ 
+
 ];
